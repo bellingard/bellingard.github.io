@@ -22,10 +22,10 @@ const openSource = (await getCollection("openSource")).sort((a, b) => a.data.ord
     intro="Projects and foundations where I contributed as developer, committer, or product lead."
     tone="snow"
   >
-    <ul class="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+    <ul class="grid gap-8 sm:grid-cols-2">
       {
         openSource.map((entry) => (
-          <li>
+          <li class="rounded-lg border border-forest/10 bg-paper/80 p-5">
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-glacier">{entry.data.org}</p>
             <h3 class="mt-2 font-display text-xl font-semibold text-forest">
               {entry.data.url ? (
@@ -36,11 +36,11 @@ const openSource = (await getCollection("openSource")).sort((a, b) => a.data.ord
                 entry.data.title
               )}
             </h3>
-            <p class="mt-1 text-sm text-ink/60">
+            <p class="mt-1 text-sm font-medium text-glacier">
               {entry.data.role} · {entry.data.years}
             </p>
             {entry.data.highlight && (
-              <p class="mt-2 text-sm font-medium text-moss">{entry.data.highlight}</p>
+              <p class="mt-3 text-base leading-7 text-ink/75">{entry.data.highlight}</p>
             )}
           </li>
         ))

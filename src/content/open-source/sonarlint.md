@@ -1,6 +1,6 @@
 ---
 title: SonarLint
-org: SonarSource
+org: Sonar
 role: Product Manager
 years: 2015–2016
 url: https://www.sonarlint.org
