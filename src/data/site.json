@@ -10,7 +10,7 @@
     "https://twitter.com/bellingard",
     "https://stackoverflow.com/users/976155",
     "https://www.npmjs.com/~bellingard",
-    "https://home.apache.org/~bellingard",
+    "https://bsky.app/profile/bellingard.fr",
     "https://independent.academia.edu/bellingard",
     "https://www.slideshare.net/bellingard"
   ],
@@ -25,7 +25,7 @@
     { "label": "X / Twitter", "href": "https://twitter.com/bellingard", "description": "Updates" },
     { "label": "Stack Overflow", "href": "https://stackoverflow.com/users/976155", "description": "Q&A" },
     { "label": "npm", "href": "https://www.npmjs.com/~bellingard", "description": "Packages" },
-    { "label": "Apache", "href": "https://home.apache.org/~bellingard", "description": "ASF home" },
+    { "label": "Bluesky", "href": "https://bsky.app/profile/bellingard.fr", "description": "Updates" },
     { "label": "Academia", "href": "https://independent.academia.edu/bellingard", "description": "Research" },
     { "label": "SlideShare", "href": "https://www.slideshare.net/bellingard", "description": "Talks & slides" }
   ],
