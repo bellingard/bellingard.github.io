@@ -6,22 +6,22 @@
   "sameAs": [
     "https://www.linkedin.com/in/bellingard",
     "https://github.com/bellingard/",
+    "https://bsky.app/profile/bellingard.fr",
     "https://fosstodon.org/@bellingard",
     "https://twitter.com/bellingard",
     "https://stackoverflow.com/users/976155",
     "https://www.npmjs.com/~bellingard",
-    "https://bsky.app/profile/bellingard.fr",
     "https://independent.academia.edu/bellingard",
     "https://www.slideshare.net/bellingard"
   ],
   "social": [
     { "label": "LinkedIn", "href": "https://www.linkedin.com/in/bellingard", "description": "Professional profile" },
     { "label": "GitHub", "href": "https://github.com/bellingard/", "description": "Code & projects" },
-    { "label": "Mastodon", "href": "https://fosstodon.org/@bellingard", "rel": "me", "description": "Fosstodon" },
+    { "label": "Bluesky", "href": "https://bsky.app/profile/bellingard.fr", "description": "Updates" },
+    { "label": "Mastodon", "href": "https://fosstodon.org/@bellingard", "rel": "me", "description": "Updates" },
     { "label": "X / Twitter", "href": "https://twitter.com/bellingard", "description": "Updates" },
     { "label": "Stack Overflow", "href": "https://stackoverflow.com/users/976155", "description": "Q&A" },
     { "label": "npm", "href": "https://www.npmjs.com/~bellingard", "description": "Packages" },
-    { "label": "Bluesky", "href": "https://bsky.app/profile/bellingard.fr", "description": "Updates" },
     { "label": "Academia", "href": "https://independent.academia.edu/bellingard", "description": "Research" },
     { "label": "SlideShare", "href": "https://www.slideshare.net/bellingard", "description": "Talks & slides" }
   ],

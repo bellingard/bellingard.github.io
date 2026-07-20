@@ -1,7 +1,7 @@
 ---
 title: Time for the Planet
 role: Associate
-url: https://www.join-time.com/9_ynTMRB1QI
+url: https://team-planet.com/en/
 order: 1
 ---
 
