@@ -11,10 +11,12 @@ import {
 } from "@lucide/astro";
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ExperienceList from "../components/ExperienceList.astro";
 import Section from "../components/Section.astro";
 import { getProfile } from "../lib/profile";
 
 const profile = getProfile();
+const featuredPositions = profile.positions.slice(0, 3);
 const openSource = (await getCollection("openSource")).sort((a, b) => a.data.order - b.data.order);
 const impactEntries = (await getCollection("impact")).sort((a, b) => a.data.order - b.data.order);
 const impact = await Promise.all(
@@ -101,28 +103,15 @@ const publications = (await getCollection("publications"))
     intro="Career history sourced from LinkedIn, refined here when needed."
     tone="mist"
   >
-    <ol class="relative space-y-0 border-l border-forest/15 pl-6">
-      {
-        profile.positions.map((job) => (
-          <li class="relative pb-10 last:pb-0">
-            <span
-              aria-hidden="true"
-              class="absolute -left-[1.64rem] top-1.5 h-3 w-3 rounded-full border-2 border-moss bg-snow"
-            />
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-glacier">
-              {job.startedOn}
-              {job.finishedOn ? ` — ${job.finishedOn}` : " — Present"}
-            </p>
-            <h3 class="mt-2 font-display text-xl font-semibold text-forest">
-              {job.title}
-              <span class="font-body text-base font-normal text-ink/55"> · {job.company}</span>
-            </h3>
-            {job.location && <p class="mt-1 text-sm text-ink/55">{job.location}</p>}
-            {job.description && <p class="mt-3 max-w-2xl text-base leading-7 text-ink/75">{job.description}</p>}
-          </li>
-        ))
-      }
-    </ol>
+    <ExperienceList positions={featuredPositions} continues />
+    <p class="mt-6">
+      <a
+        class="inline-flex items-center rounded-md border border-forest/20 bg-snow/70 px-4 py-2.5 text-sm font-medium text-forest transition hover:border-glacier hover:text-glacier"
+        href="/experience"
+      >
+        All experience
+      </a>
+    </p>
   </Section>
 
   <Section

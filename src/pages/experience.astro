@@ -1,0 +1,26 @@
+---
+import { Briefcase } from "@lucide/astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ExperienceList from "../components/ExperienceList.astro";
+import Section from "../components/Section.astro";
+import { getProfile } from "../lib/profile";
+
+const profile = getProfile();
+---
+
+<BaseLayout
+  title={`Experience — ${profile.name}`}
+  description="Career history and roles, sourced from LinkedIn and refined on this site."
+  canonicalPath="/experience"
+>
+  <Section
+    id="all-experience"
+    eyebrow="Experience"
+    icon={Briefcase}
+    title="Where I've built"
+    intro="Full career history sourced from LinkedIn, refined here when needed."
+    tone="snow"
+  >
+    <ExperienceList positions={profile.positions} />
+  </Section>
+</BaseLayout>
