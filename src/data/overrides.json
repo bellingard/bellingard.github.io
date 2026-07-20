@@ -1,5 +1,14 @@
 {
-  "positionOverrides": {},
+  "positionOverrides": {
+    "The Shifters::Bénévole au sein des Shifters": {
+      "title": "Volunteer",
+      "description": "The Shifters is a public-interest association that brings together volunteers committed to the low-carbon transition of France and Europe."
+    },
+    "Sator::Ambassadeur": {
+      "title": "Ambassador",
+      "description": "Sator is a platform to learn, understand, and act for a sustainable and desirable environment, democratic life, and economy. More than 30 masterclasses have been designed with leading scientists and experts. Learn more at https://www.sator.fr"
+    }
+  },
   "positionGroups": [
     {
       "company": "Sonar",
