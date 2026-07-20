@@ -1,0 +1,30 @@
+[
+  {
+    "Title": "SQALE",
+    "Description": "",
+    "Url": "http://www.squale.org",
+    "Started On": "Sep 2006",
+    "Finished On": "Sep 2007"
+  },
+  {
+    "Title": "Apache Maven",
+    "Description": "",
+    "Url": "",
+    "Started On": "Jan 2006",
+    "Finished On": "Dec 2010"
+  },
+  {
+    "Title": "Apache Archiva",
+    "Description": "",
+    "Url": "",
+    "Started On": "Jan 2008",
+    "Finished On": "Dec 2010"
+  },
+  {
+    "Title": "Sonar Scanner for npm",
+    "Description": "Creator and maintainer of the open-source project: https://www.npmjs.com/package/sonarqube-scanner",
+    "Url": "",
+    "Started On": "Jan 2016",
+    "Finished On": "Dec 2023"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "importedAt": "2026-07-20T12:56:35.635Z",
+  "source": "Basic_LinkedInDataExport_07-20-2026.zip.zip",
+  "files": [
+    "certifications.json",
+    "education.json",
+    "languages.json",
+    "positions.json",
+    "profile.json",
+    "projects.json",
+    "publications.json",
+    "skills.json",
+    "volunteer.json"
+  ]
+}

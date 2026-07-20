@@ -1,0 +1,37 @@
+{
+  "name": "Fabrice Bellingard",
+  "photo": "/images/avatar.jpg",
+  "photoAlt": "Portrait of Fabrice Bellingard",
+  "email": "",
+  "sameAs": [
+    "https://www.linkedin.com/in/bellingard",
+    "https://github.com/bellingard/",
+    "https://fosstodon.org/@bellingard",
+    "https://twitter.com/bellingard",
+    "https://stackoverflow.com/users/976155",
+    "https://www.npmjs.com/~bellingard",
+    "https://home.apache.org/~bellingard",
+    "https://independent.academia.edu/bellingard",
+    "https://www.slideshare.net/bellingard"
+  ],
+  "heroCtas": [
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/bellingard" },
+    { "label": "GitHub", "href": "https://github.com/bellingard/" }
+  ],
+  "social": [
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/bellingard", "description": "Professional profile" },
+    { "label": "GitHub", "href": "https://github.com/bellingard/", "description": "Code & projects" },
+    { "label": "Mastodon", "href": "https://fosstodon.org/@bellingard", "rel": "me", "description": "Fosstodon" },
+    { "label": "X / Twitter", "href": "https://twitter.com/bellingard", "description": "Updates" },
+    { "label": "Stack Overflow", "href": "https://stackoverflow.com/users/976155", "description": "Q&A" },
+    { "label": "npm", "href": "https://www.npmjs.com/~bellingard", "description": "Packages" },
+    { "label": "Apache", "href": "https://home.apache.org/~bellingard", "description": "ASF home" },
+    { "label": "Academia", "href": "https://independent.academia.edu/bellingard", "description": "Research" },
+    { "label": "SlideShare", "href": "https://www.slideshare.net/bellingard", "description": "Talks & slides" }
+  ],
+  "about": [
+    "Since the early 2000s, I have contributed to open-source projects from Eclipse to Apache. That path led me to SonarSource in October 2010, where I spent 15 years leading Product — from PM to CPO.",
+    "Over the same decades I grew increasingly concerned about the planet. I joined Time for the Planet as an associate: we use collective intelligence and an open-source model to advance climate solutions."
+  ],
+  "tagline": "Tech craftsmanship meeting climate & biodiversity impact."
+}

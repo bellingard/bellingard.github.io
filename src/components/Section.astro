@@ -1,0 +1,50 @@
+---
+interface Props {
+  id: string;
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  // Lucide (or any) Astro icon component
+  icon?: any;
+  tone?: "default" | "mist" | "snow" | "forest";
+}
+
+const { id, eyebrow, title, intro, icon: Icon, tone = "default" } = Astro.props;
+
+const toneClass = {
+  default: "bg-paper",
+  mist: "bg-mist/55",
+  snow: "bg-snow",
+  forest: "bg-forest text-snow",
+}[tone];
+
+const titleClass = tone === "forest" ? "text-snow" : "text-forest";
+const introClass = tone === "forest" ? "text-snow/75" : "text-ink/70";
+const eyebrowClass = tone === "forest" ? "text-mist" : "text-glacier";
+const iconWrapClass =
+  tone === "forest"
+    ? "bg-snow/12 text-mist"
+    : "bg-glacier/12 text-glacier";
+---
+
+<section id={id} class:list={["scroll-mt-24 border-t border-forest/10 py-16 sm:py-20", toneClass]}>
+  <div class="mx-auto max-w-5xl px-4 sm:px-6">
+    {
+      eyebrow && (
+        <p class:list={["mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]", eyebrowClass]}>
+          {Icon && (
+            <span class:list={["grid h-7 w-7 place-items-center rounded-md", iconWrapClass]} aria-hidden="true">
+              <Icon size={15} stroke-width={2} />
+            </span>
+          )}
+          {eyebrow}
+        </p>
+      )
+    }
+    <h2 class:list={["font-display text-3xl font-semibold tracking-tight sm:text-4xl", titleClass]}>{title}</h2>
+    {intro && <p class:list={["mt-4 max-w-2xl text-base leading-7", introClass]}>{intro}</p>}
+    <div class="mt-10">
+      <slot />
+    </div>
+  </div>
+</section>

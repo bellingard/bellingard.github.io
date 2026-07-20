@@ -1,0 +1,72 @@
+---
+import { Menu, X } from "@lucide/astro";
+import { getProfile } from "../lib/profile";
+
+const profile = getProfile();
+
+const navItems = [
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Impact", href: "/#impact" },
+  { label: "Open source", href: "/#open-source" },
+  { label: "Publications", href: "/publications" },
+  { label: "Social", href: "/#social" },
+] as const;
+---
+
+<header class="sticky top-0 z-40 border-b border-forest/10 bg-snow/92 font-display backdrop-blur-md">
+  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href="/" class="text-base font-semibold tracking-tight text-forest sm:text-lg">
+      {profile.name}
+    </a>
+
+    <nav class="hidden items-center gap-0.5 text-sm md:flex" aria-label="Primary">
+      {
+        navItems.map((item) => (
+          <a
+            class="rounded-md px-2.5 py-1.5 text-ink/70 transition hover:bg-mist hover:text-ink"
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <details class="group relative md:hidden">
+      <summary
+        class="flex cursor-pointer items-center gap-2 rounded-md border border-forest/15 bg-snow px-3 py-2 text-sm font-medium text-forest"
+        aria-label="Open menu"
+      >
+        <Menu class="group-open:hidden" size={18} aria-hidden="true" />
+        <X class="hidden group-open:block" size={18} aria-hidden="true" />
+        <span>Menu</span>
+      </summary>
+      <nav
+        class="absolute right-0 z-50 mt-2 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-forest/10 bg-snow p-2 shadow-lg shadow-forest/10"
+        aria-label="Mobile"
+      >
+        {
+          navItems.map((item) => (
+            <a
+              class="block rounded-md px-3 py-2.5 text-sm text-ink/80 hover:bg-mist hover:text-ink"
+              href={item.href}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  // Close the mobile menu after navigating to an in-page anchor.
+  document.querySelectorAll("header details a[href*='#']").forEach((link) => {
+    link.addEventListener("click", () => {
+      const details = link.closest("details");
+      if (details) details.open = false;
+    });
+  });
+</script>

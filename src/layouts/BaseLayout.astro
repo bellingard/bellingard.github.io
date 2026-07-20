@@ -1,0 +1,97 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import { getProfile } from "../lib/profile";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const profile = getProfile();
+const {
+  title = `${profile.name} — Product, open source & climate impact`,
+  description = profile.tagline,
+  canonicalPath = "/",
+} = Astro.props;
+
+const canonical = new URL(canonicalPath, Astro.site).href;
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.headline,
+  url: Astro.site?.href,
+  image: new URL(profile.photo, Astro.site).href,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Annecy",
+    addressCountry: "FR",
+  },
+  sameAs: profile.sameAs,
+  knowsAbout: profile.skills,
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content={profile.name} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(profile.photo, Astro.site).href} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personLd)} />
+  </head>
+  <body class="min-h-screen antialiased">
+    <a
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-snow focus:px-4 focus:py-2 focus:text-sm"
+      href="#content"
+    >
+      Skip to content
+    </a>
+
+    <SiteHeader />
+
+    <main id="content">
+      <slot />
+    </main>
+
+    <footer class="border-t border-forest/10 bg-forest text-snow">
+      <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-end sm:justify-between sm:px-6">
+        <div>
+          <p class="font-display text-lg font-semibold">{profile.name}</p>
+          <p class="mt-1 text-sm text-snow/65">{profile.location}</p>
+        </div>
+        <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+          {
+            profile.social.slice(0, 5).map((link) => (
+              <li>
+                <a
+                  class="text-mist underline-offset-4 transition hover:text-snow hover:underline"
+                  href={link.href}
+                  rel={link.rel ?? "noopener noreferrer"}
+                  target="_blank"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="border-t border-snow/10 py-4 text-center text-xs text-snow/45">
+        © {new Date().getFullYear()} {profile.name} · Built with Astro · Low-impact static site
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+[
+  {
+    "title": "An empirical model for continuous and weighted metric aggregation",
+    "publisher": "2011 15th European Conference on Software Maintenance and Reengineering",
+    "date": "",
+    "description": "It is now understood that software metrics alone are not enough to characterize software quality. To cope with this problem, most of advanced and/or industrially validated quality models aggregate software metrics: for example, cyclomatic complexity is combined with test coverage to stress the fact that it is more important to cover complex methods than accessors. Yet, aggregating and weighting metrics to produce quality indexes is a difficult task. Indeed, certain weighting approaches may lead to abnormal situations where a developer increasing the quality of a software component seeing the overall quality degrade. Finally, mapping combinations of metric values to quality indexes may be a problem when using thresholds. In this paper, we present the problems we faced when designing the Squale quality model, then we present an empirical solution based on weighted aggregations and on continuous functions. The solution has been termed the Squale quality model and validated over 4 years with two large multinational companies: Air France-KLM and PSA Peugeot-Citroen.",
+    "url": "https://www.academia.edu/18276208/An_Empirical_Model_for_Continuous_and_Weighted_Metric_Aggregation"
+  },
+  {
+    "title": "Practice-based Industrial Quality Model",
+    "publisher": "2009 IEEE International Conference on Software Maintenance",
+    "date": "",
+    "description": "ISO 9126 promotes a three-level model of quality (factors, criteria, and metrics) which allows one to assess quality at the top level of factors and criteria. However, it is difficult to use this model as a tool to increase software quality. We suggest an alternative to solve this problem.",
+    "url": "https://www.academia.edu/18262919/The_squale_model_and_x2014_A_practice_based_industrial_quality_model"
+  },
+  {
+    "title": "SQUALE -- Software QUALity Enhancement",
+    "publisher": "2009 13th European Conference on Software Maintenance and Reengineering",
+    "date": "",
+    "description": "",
+    "url": "https://www.academia.edu/18262920/SQUALE_and_150_Software_QUALity_Enhancement"
+  }
+]

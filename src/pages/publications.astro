@@ -1,0 +1,66 @@
+---
+import { BookOpen } from "@lucide/astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+
+const publications = (await getCollection("publications")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Publications — Fabrice Bellingard"
+  description="Academic publications and Squale research deliverables by Fabrice Bellingard."
+  canonicalPath="/publications"
+>
+  <Section
+    id="all-publications"
+    eyebrow="Research"
+    icon={BookOpen}
+    title="Academic publications"
+    intro="Conference papers and Squale project deliverables on software quality models, metrics, and remediation."
+    tone="snow"
+  >
+    <ul class="space-y-10">
+      {
+        publications.map((pub) => (
+          <li class="max-w-3xl border-b border-forest/10 pb-10 last:border-0">
+            <h3 class="font-display text-xl font-semibold text-forest">{pub.data.title}</h3>
+            <p class="mt-2 text-sm italic leading-6 text-ink/60">{pub.data.authors}</p>
+            <p class="mt-2 text-sm text-ink/75">
+              {pub.data.venue}, {pub.data.year}
+            </p>
+            <div class="mt-4 flex flex-wrap gap-4 text-sm">
+              {pub.data.url && (
+                <a
+                  class="font-medium text-glacier underline-offset-4 hover:underline"
+                  href={pub.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on Academia.edu
+                </a>
+              )}
+              {pub.data.pdf && (
+                <a class="font-medium text-moss underline-offset-4 hover:underline" href={pub.data.pdf}>
+                  PDF
+                </a>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-10 text-sm text-ink/60">
+      Full profile on{" "}
+      <a
+        class="text-glacier underline-offset-4 hover:underline"
+        href="https://independent.academia.edu/bellingard"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Academia.edu
+      </a>
+      .
+    </p>
+  </Section>
+</BaseLayout>

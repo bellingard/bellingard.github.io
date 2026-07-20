@@ -1,0 +1,122 @@
+[
+  {
+    "company": "Team for the Planet",
+    "title": "Associate",
+    "description": "Team for the Planet is a nonprofit company that creates and finances companies fighting against climate change at a global scale.  Video in French => https://www.youtube.com/watch?v=DZnWYPM8dzg&t=4s Video in English => https://youtu.be/zYGB8HxfMUI",
+    "location": "",
+    "startedOn": "Jun 2021",
+    "finishedOn": null
+  },
+  {
+    "company": "The Shifters",
+    "title": "Bénévole au sein des Shifters",
+    "description": "The Shifters est une association d’intérêt général qui rassemble des bénévoles engagés dans la transition bas-carbone de la France et de l’Europe.  Rejoignez-nous !",
+    "location": "",
+    "startedOn": "May 2026",
+    "finishedOn": null
+  },
+  {
+    "company": "Sator",
+    "title": "Ambassadeur",
+    "description": "Sator une plateforme pour se former, comprendre et agir, en faveur d'un environnement, d'une vie démocratique et d'une économie tant soutenables que désirables. 🌍 Plus de 30 masterclass ont été conçues par, et réalisées avec, un panel de scientifiques et d'experts, leaders de leur discipline.  Il n'est jamais trop tard pour apprendre, surtout auprès des meilleurs. ✨  → Allez vite voir https://www.sator.fr 💫",
+    "location": "",
+    "startedOn": "Feb 2026",
+    "finishedOn": null
+  },
+  {
+    "company": "Sonar",
+    "title": "Advisor",
+    "description": "",
+    "location": "",
+    "startedOn": "Nov 2025",
+    "finishedOn": "Feb 2026"
+  },
+  {
+    "company": "Sonar",
+    "title": "Chief Product Officer",
+    "description": "Owns Product Strategy, Product Management, Product UX and Documentation, Product Data, and Developer Relations. Team of 50+ PMs, UX designers and researchers, tech writers, dev advocates and community managers.",
+    "location": "Annecy, Auvergne-Rhône-Alpes, France",
+    "startedOn": "Sep 2022",
+    "finishedOn": "Sep 2025"
+  },
+  {
+    "company": "SonarSource",
+    "title": "VP of Product and Head of Product Management",
+    "description": "Created from scratch the Product Management team at SonarSource, growing it to 15 PMs before recruiting a Head of PM to own this function.",
+    "location": "Annecy",
+    "startedOn": "May 2019",
+    "finishedOn": "Sep 2022"
+  },
+  {
+    "company": "SonarSource",
+    "title": "Senior Product Manager - SonarCloud",
+    "description": "I led and launched SonarQube SaaS offering, initially called SonarCloud and rebranded later to SonarQube Cloud.",
+    "location": "Annecy",
+    "startedOn": "Dec 2017",
+    "finishedOn": "Jul 2020"
+  },
+  {
+    "company": "SonarSource",
+    "title": "Product Manager - SonarQube",
+    "description": "I led the development of the open-source and commercial editions of SonarQube, progressively reaching hundreds of thousands of installations throughout the world.",
+    "location": "Annecy",
+    "startedOn": "Sep 2012",
+    "finishedOn": "Dec 2017"
+  },
+  {
+    "company": "Sonar",
+    "title": "Startup Mode",
+    "description": "Instead of leading a competing open-source project in my previous company, I decided to join forces with the 3 founders in the early days of Sonar. As the the 2nd employee of the company, I was doing product development, community and customer support, ... and all the things that must be done in a startup mode.",
+    "location": "Hyères, Provence-Alpes-Côte d'Azur, France",
+    "startedOn": "Oct 2010",
+    "finishedOn": "Aug 2012"
+  },
+  {
+    "company": "The Apache Software Foundation",
+    "title": "Committer and PMC - Apache Archiva",
+    "description": "",
+    "location": "",
+    "startedOn": "Jan 2008",
+    "finishedOn": "Sep 2010"
+  },
+  {
+    "company": "Qualixo",
+    "title": "Chief Technology Officer",
+    "description": "Qualixo is specialised in software quality.  I launched and led the open-source Squale project (http://www.squale.org), a code-quality product. My roles:  ⟶ Architect and Technical Lead  ⟶ Team and open-source community management  ⟶ Research project management (as part of the System@tic Paris-Region competitive cluster)  ⟶ Commercial services development and promotion",
+    "location": "Greater Paris Metropolitan Region",
+    "startedOn": "May 2007",
+    "finishedOn": "Sep 2010"
+  },
+  {
+    "company": "The Apache Software Foundation",
+    "title": "Committer - Apache Maven",
+    "description": "",
+    "location": "",
+    "startedOn": "Nov 2006",
+    "finishedOn": "Sep 2010"
+  },
+  {
+    "company": "Groupe PSA",
+    "title": "CI & Code Quality Expert",
+    "description": "I set up the first Continuous Integration service from scratch for the whole company, reaching hundreds of Java projects for several different business units. As part of this effort, I also set up the first code quality tools and practices for the whole company.",
+    "location": "Paris Area, France",
+    "startedOn": "Apr 2004",
+    "finishedOn": "Apr 2007"
+  },
+  {
+    "company": "Improve",
+    "title": "Software Engineer",
+    "description": "☑ Java Web Application development ☑ Eclipse-based project development and management ☑ IT training ☑ Open-source framework development",
+    "location": "Paris Area, France",
+    "startedOn": "Jan 2002",
+    "finishedOn": "Mar 2004"
+  },
+  {
+    "company": "IBM Ottawa Lab (formerly OTI)",
+    "title": "Sotware Engineer",
+    "description": "Member of the Eclipse Core Team: I developed the Ant Plugin for the first version of Eclipse.",
+    "location": "Ottawa, Canada Area",
+    "startedOn": "Apr 2001",
+    "finishedOn": "Sep 2001"
+  }
+]

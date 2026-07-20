@@ -1,0 +1,30 @@
+[
+  {
+    "school": "CPO Accelerator",
+    "degree": "Executive Product Leadership Program",
+    "field": "",
+    "startedOn": "Sep 2022",
+    "finishedOn": "Nov 2022"
+  },
+  {
+    "school": "IMT Atlantique",
+    "degree": "Masters Degree (Ingénieur)",
+    "field": "Top student of year 2002 in the field of Information Technology Management",
+    "startedOn": "1998",
+    "finishedOn": "2002"
+  },
+  {
+    "school": "Danmarks Tekniske Universitet",
+    "degree": "Masters Degree",
+    "field": "",
+    "startedOn": "2000",
+    "finishedOn": "2001"
+  },
+  {
+    "school": "Ecole des Mines de Nantes",
+    "degree": "Masters Degree (Ingénieur)",
+    "field": "Ecole des Mines de Nantes is now IMT Atlantique",
+    "startedOn": "1998",
+    "finishedOn": "2002"
+  }
+]
