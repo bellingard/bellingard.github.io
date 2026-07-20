@@ -16,7 +16,9 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
   >
     {
       !isHome && (
-        <p class="text-base font-semibold tracking-tight text-forest sm:text-lg">{profile.name}</p>
+        <a href="/" class="text-base font-semibold tracking-tight text-forest sm:text-lg">
+          {profile.name}
+        </a>
       )
     }
 
