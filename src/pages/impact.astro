@@ -1,0 +1,53 @@
+---
+import { Leaf } from "@lucide/astro";
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import { getProfile } from "../lib/profile";
+
+const profile = getProfile();
+const impactEntries = (await getCollection("impact")).sort((a, b) => a.data.order - b.data.order);
+const impact = await Promise.all(
+  impactEntries.map(async (entry) => {
+    const { Content } = await render(entry);
+    return { entry, Content };
+  }),
+);
+---
+
+<BaseLayout
+  title={`Impact — ${profile.name}`}
+  description="Climate and community engagements alongside product and engineering work."
+  canonicalPath="/impact"
+>
+  <Section
+    id="impact"
+    eyebrow="Impact"
+    icon={Leaf}
+    title="Climate & community"
+    intro="Engagements that sit alongside product and engineering work."
+    tone="snow"
+  >
+    <ul class="grid gap-8 sm:grid-cols-2">
+      {
+        impact.map(({ entry, Content }) => (
+          <li class="rounded-lg border border-forest/10 bg-paper/80 p-5">
+            <h3 class="font-display text-xl font-semibold text-forest">
+              {entry.data.url ? (
+                <a class="underline-offset-4 hover:underline" href={entry.data.url} target="_blank" rel="noopener noreferrer">
+                  {entry.data.title}
+                </a>
+              ) : (
+                entry.data.title
+              )}
+            </h3>
+            {entry.data.role && <p class="mt-1 text-sm font-medium text-glacier">{entry.data.role}</p>}
+            <div class="mt-3 text-base leading-7 text-ink/75">
+              <Content />
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</BaseLayout>

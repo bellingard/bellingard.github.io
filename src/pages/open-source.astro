@@ -1,0 +1,50 @@
+---
+import { CodeXml } from "@lucide/astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import { getProfile } from "../lib/profile";
+
+const profile = getProfile();
+const openSource = (await getCollection("openSource")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title={`Open source — ${profile.name}`}
+  description="Open-source projects and foundations: developer, committer, and product contributions."
+  canonicalPath="/open-source"
+>
+  <Section
+    id="open-source"
+    eyebrow="Open source"
+    icon={CodeXml}
+    title="Code that outlived job titles"
+    intro="Projects and foundations where I contributed as developer, committer, or product lead."
+    tone="snow"
+  >
+    <ul class="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+      {
+        openSource.map((entry) => (
+          <li>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-glacier">{entry.data.org}</p>
+            <h3 class="mt-2 font-display text-xl font-semibold text-forest">
+              {entry.data.url ? (
+                <a class="underline-offset-4 hover:underline" href={entry.data.url} target="_blank" rel="noopener noreferrer">
+                  {entry.data.title}
+                </a>
+              ) : (
+                entry.data.title
+              )}
+            </h3>
+            <p class="mt-1 text-sm text-ink/60">
+              {entry.data.role} · {entry.data.years}
+            </p>
+            {entry.data.highlight && (
+              <p class="mt-2 text-sm font-medium text-moss">{entry.data.highlight}</p>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</BaseLayout>

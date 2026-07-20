@@ -7,6 +7,8 @@ interface Props {
   title?: string;
   description?: string;
   canonicalPath?: string;
+  /** When false, render a chrome-less hub page (no header/footer). */
+  chrome?: boolean;
 }
 
 const profile = getProfile();
@@ -14,6 +16,7 @@ const {
   title = `${profile.name} — Product, open source & climate impact`,
   description = profile.tagline,
   canonicalPath = "/",
+  chrome = true,
 } = Astro.props;
 
 const canonical = new URL(canonicalPath, Astro.site).href;
@@ -60,38 +63,20 @@ const personLd = {
       Skip to content
     </a>
 
-    <SiteHeader />
+    {chrome && <SiteHeader />}
 
-    <main id="content">
+    <main id="content" class:list={[!chrome && "min-h-screen"]}>
       <slot />
     </main>
 
-    <footer class="border-t border-forest/10 bg-forest text-snow">
-      <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-end sm:justify-between sm:px-6">
-        <div>
-          <p class="font-display text-lg font-semibold">{profile.name}</p>
-          <p class="mt-1 text-sm text-snow/65">{profile.location}</p>
-        </div>
-        <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-          {
-            profile.social.slice(0, 5).map((link) => (
-              <li>
-                <a
-                  class="text-mist underline-offset-4 transition hover:text-snow hover:underline"
-                  href={link.href}
-                  rel={link.rel ?? "noopener noreferrer"}
-                  target="_blank"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div class="border-t border-snow/10 py-4 text-center text-xs text-snow/45">
-        © {new Date().getFullYear()} {profile.name} · Built with Astro · Low-impact static site
-      </div>
-    </footer>
+    {
+      chrome && (
+        <footer class="border-t border-forest/10 bg-forest text-snow">
+          <div class="border-t border-snow/10 py-4 text-center text-xs text-snow/45">
+            © {new Date().getFullYear()} {profile.name} · Built with Astro · Low-impact static site
+          </div>
+        </footer>
+      )
+    }
   </body>
 </html>

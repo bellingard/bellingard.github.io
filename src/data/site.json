@@ -14,10 +14,6 @@
     "https://independent.academia.edu/bellingard",
     "https://www.slideshare.net/bellingard"
   ],
-  "heroCtas": [
-    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/bellingard" },
-    { "label": "GitHub", "href": "https://github.com/bellingard/" }
-  ],
   "social": [
     { "label": "LinkedIn", "href": "https://www.linkedin.com/in/bellingard", "description": "Professional profile" },
     { "label": "GitHub", "href": "https://github.com/bellingard/", "description": "Code & projects" },
@@ -30,8 +26,10 @@
     { "label": "SlideShare", "href": "https://www.slideshare.net/bellingard", "description": "Talks & slides" }
   ],
   "about": [
-    "Since the early 2000s, I have contributed to open-source projects from Eclipse to Apache. That path led me to SonarSource in October 2010, where I spent 15 years leading Product — from PM to CPO.",
-    "Over the same decades I grew increasingly concerned about the planet. I joined Time for the Planet as an associate: we use collective intelligence and an open-source model to advance climate solutions."
+    "💻 Since the early 2000s, I have contributed to several open-source projects. That path led me to Sonar, where I spent 15 years building an outstanding company and great products — from Software Engineer to Chief Product Officer.",
+    "🌍 Over the same decades, I also grew increasingly concerned about the planet, and spent my personal time doing everything I could do to help in any way.", 
+    "🌱 Now, I'm dedicated full-time to addressing the environmental crisis - whatever that means...",
+    "✨ If you think our roads should cross, feel free to get in touch!"
   ],
-  "tagline": "Tech craftsmanship meeting climate & biodiversity impact."
+  "tagline": "From Tech craftsmanship to climate & biodiversity impact."
 }

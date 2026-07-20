@@ -32,7 +32,6 @@ export type Profile = {
   photoAlt: string;
   tagline: string;
   about: string[];
-  heroCtas: SocialLink[];
   social: SocialLink[];
   sameAs: string[];
   positions: Position[];
@@ -73,7 +72,6 @@ export function getProfile(): Profile {
     photoAlt: site.photoAlt,
     tagline: site.tagline,
     about: site.about,
-    heroCtas: (site.heroCtas ?? []) as SocialLink[],
     social: site.social as SocialLink[],
     sameAs: site.sameAs,
     positions: applyPositionOverrides(positions as Position[]),

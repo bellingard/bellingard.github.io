@@ -28,6 +28,14 @@
     min-width: 320px;
     color: var(--color-ink);
     font-family: var(--font-sans);
+    background:
+      linear-gradient(
+        to bottom right,
+        color-mix(in srgb, var(--color-mist) 80%, transparent),
+        var(--color-paper),
+        var(--color-snow)
+      );
+    background-attachment: fixed;
     background-color: var(--color-paper);
   }
 

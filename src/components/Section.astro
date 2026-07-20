@@ -12,9 +12,9 @@ interface Props {
 const { id, eyebrow, title, intro, icon: Icon, tone = "default" } = Astro.props;
 
 const toneClass = {
-  default: "bg-paper",
-  mist: "bg-mist/55",
-  snow: "bg-snow",
+  default: "bg-transparent",
+  mist: "bg-transparent",
+  snow: "bg-transparent",
   forest: "bg-forest text-snow",
 }[tone];
 

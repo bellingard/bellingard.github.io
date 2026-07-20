@@ -1,68 +1,65 @@
 ---
 import {
-  ArrowUpRight,
   BookOpen,
   Briefcase,
   CodeXml,
   Leaf,
   Share2,
   Sparkles,
-  UserRound,
 } from "@lucide/astro";
-import { getCollection, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ExperienceList from "../components/ExperienceList.astro";
-import Section from "../components/Section.astro";
 import { getProfile } from "../lib/profile";
 
 const profile = getProfile();
-const featuredPositions = profile.positions.slice(0, 3);
-const openSource = (await getCollection("openSource")).sort((a, b) => a.data.order - b.data.order);
-const impactEntries = (await getCollection("impact")).sort((a, b) => a.data.order - b.data.order);
-const impact = await Promise.all(
-  impactEntries.map(async (entry) => {
-    const { Content } = await render(entry);
-    return { entry, Content };
-  }),
-);
-const publications = (await getCollection("publications"))
-  .filter((p) => p.data.featured)
-  .sort((a, b) => a.data.order - b.data.order);
+
+const sections = [
+  { label: "Experience", href: "/experience", icon: Briefcase },
+  { label: "Impact", href: "/impact", icon: Leaf },
+  { label: "Open source", href: "/open-source", icon: CodeXml },
+  { label: "Skills", href: "/skills", icon: Sparkles },
+  { label: "Publications", href: "/publications", icon: BookOpen },
+  { label: "Social", href: "/social", icon: Share2 },
+] as const;
 ---
 
 <BaseLayout>
-  <section class="relative overflow-hidden border-b border-forest/10 bg-gradient-to-br from-mist/80 via-paper to-snow">
-    <div class="mx-auto grid max-w-5xl gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+  <section>
+    <div class="mx-auto grid w-full max-w-5xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
       <div>
-        <p class="reveal text-sm font-medium tracking-wide text-glacier">{profile.location}</p>
-        <h1 class="reveal reveal-delay-1 font-display mt-3 text-4xl font-semibold leading-[1.08] tracking-tight text-forest sm:text-5xl lg:text-6xl">
+        <h1 class="reveal font-display text-4xl font-semibold leading-[1.08] tracking-tight text-forest sm:text-5xl lg:text-6xl">
           {profile.name}
         </h1>
-        <p class="reveal reveal-delay-2 mt-6 max-w-xl text-lg leading-8 text-ink/75">
+        <p class="reveal reveal-delay-1 mt-6 max-w-xl text-lg leading-8 text-ink/75">
           {profile.tagline}
         </p>
-        <div class="reveal reveal-delay-3 mt-8 flex flex-wrap gap-3">
-          {
-            profile.heroCtas.map((link) => (
-              <a
-                class="inline-flex items-center rounded-md bg-forest px-4 py-2.5 text-sm font-medium text-snow transition hover:bg-moss"
-                href={link.href}
-                rel={link.rel ?? "noopener noreferrer"}
-                target="_blank"
-              >
-                {link.label}
-              </a>
-            ))
-          }
-          <a
-            class="inline-flex items-center rounded-md border border-forest/20 bg-snow/70 px-4 py-2.5 text-sm font-medium text-forest transition hover:border-glacier hover:text-glacier"
-            href="#about"
-          >
-            Read more
-          </a>
+        <div class="reveal reveal-delay-2 mt-6 max-w-xl space-y-4 text-base leading-7 text-ink/80">
+          {profile.about.map((paragraph) => <p>{paragraph}</p>)}
         </div>
+
+        <nav class="reveal reveal-delay-3 mt-10" aria-label="Sections">
+          <ul class="flex flex-wrap gap-3">
+            {
+              sections.map(({ label, href, icon: Icon }) => (
+                <li>
+                  <a
+                    class="group flex h-[6.25rem] w-[5.5rem] flex-col items-center justify-between rounded-xl border border-forest/12 bg-snow/80 px-2 py-3 text-center transition hover:border-glacier/40 hover:bg-mist/50"
+                    href={href}
+                  >
+                    <span class="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-glacier/12 text-glacier transition group-hover:bg-glacier/20 group-hover:text-forest">
+                      <Icon size={20} stroke-width={2} aria-hidden="true" />
+                    </span>
+                    <span class="font-display flex h-8 items-center justify-center text-[0.68rem] font-medium leading-tight text-ink/70 group-hover:text-forest">
+                      {label}
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
       </div>
-      <div class="reveal reveal-delay-2 justify-self-center lg:justify-self-end">
+
+      <div class="reveal reveal-delay-2 justify-self-center lg:justify-self-end lg:pt-6">
         <figure class="relative">
           <div
             aria-hidden="true"
@@ -81,194 +78,4 @@ const publications = (await getCollection("publications"))
       </div>
     </div>
   </section>
-
-  <Section
-    id="about"
-    eyebrow="About"
-    icon={UserRound}
-    title="Two threads, one craft"
-    intro={profile.headline}
-    tone="snow"
-  >
-    <div class="max-w-2xl space-y-4 text-base leading-7 text-ink/80">
-      {profile.about.map((paragraph) => <p>{paragraph}</p>)}
-    </div>
-  </Section>
-
-  <Section
-    id="experience"
-    eyebrow="Experience"
-    icon={Briefcase}
-    title="Where I've built"
-    intro="Career history sourced from LinkedIn, refined here when needed."
-    tone="mist"
-  >
-    <ExperienceList positions={featuredPositions} continues />
-    <p class="mt-6">
-      <a
-        class="inline-flex items-center rounded-md border border-forest/20 bg-snow/70 px-4 py-2.5 text-sm font-medium text-forest transition hover:border-glacier hover:text-glacier"
-        href="/experience"
-      >
-        All experience
-      </a>
-    </p>
-  </Section>
-
-  <Section
-    id="impact"
-    eyebrow="Impact"
-    icon={Leaf}
-    title="Climate & community"
-    intro="Engagements that sit alongside product and engineering work."
-    tone="snow"
-  >
-    <ul class="grid gap-8 sm:grid-cols-2">
-      {
-        impact.map(({ entry, Content }) => (
-          <li class="rounded-lg border border-forest/10 bg-paper/80 p-5">
-            <h3 class="font-display text-xl font-semibold text-forest">
-              {entry.data.url ? (
-                <a class="underline-offset-4 hover:underline" href={entry.data.url} target="_blank" rel="noopener noreferrer">
-                  {entry.data.title}
-                </a>
-              ) : (
-                entry.data.title
-              )}
-            </h3>
-            {entry.data.role && <p class="mt-1 text-sm font-medium text-glacier">{entry.data.role}</p>}
-            <div class="mt-3 text-base leading-7 text-ink/75">
-              <Content />
-            </div>
-          </li>
-        ))
-      }
-    </ul>
-  </Section>
-
-  <Section
-    id="open-source"
-    eyebrow="Open source"
-    icon={CodeXml}
-    title="Code that outlived job titles"
-    intro="Projects and foundations where I contributed as developer, committer, or product lead."
-    tone="mist"
-  >
-    <ul class="grid gap-x-10 gap-y-8 sm:grid-cols-2">
-      {
-        openSource.map((entry) => (
-          <li>
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-glacier">{entry.data.org}</p>
-            <h3 class="mt-2 font-display text-xl font-semibold text-forest">
-              {entry.data.url ? (
-                <a class="underline-offset-4 hover:underline" href={entry.data.url} target="_blank" rel="noopener noreferrer">
-                  {entry.data.title}
-                </a>
-              ) : (
-                entry.data.title
-              )}
-            </h3>
-            <p class="mt-1 text-sm text-ink/60">
-              {entry.data.role} · {entry.data.years}
-            </p>
-            {entry.data.highlight && (
-              <p class="mt-2 text-sm font-medium text-moss">{entry.data.highlight}</p>
-            )}
-          </li>
-        ))
-      }
-    </ul>
-  </Section>
-
-  {
-    profile.skills.length > 0 && (
-      <Section id="skills" eyebrow="Skills" icon={Sparkles} title="Focus areas" tone="snow">
-        <ul class="flex flex-wrap gap-2">
-          {profile.skills.map((skill) => (
-            <li class="rounded-md border border-forest/12 bg-paper px-3 py-1.5 text-sm text-ink/80">{skill}</li>
-          ))}
-        </ul>
-        {profile.languages.length > 0 && (
-          <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/70">
-            {profile.languages.map((lang) => (
-              <li>
-                <span class="font-medium text-forest">{lang.name}</span>
-                {lang.proficiency && <span class="text-ink/50"> — {lang.proficiency}</span>}
-              </li>
-            ))}
-          </ul>
-        )}
-      </Section>
-    )
-  }
-
-  <Section
-    id="publications"
-    eyebrow="Research"
-    icon={BookOpen}
-    title="Academic publications"
-    intro="Selected papers from the Squale research programme and related venues."
-    tone="mist"
-  >
-    <ul class="space-y-6">
-      {
-        publications.map((pub) => (
-          <li class="max-w-3xl border-b border-forest/10 pb-6 last:border-0 last:pb-0">
-            <h3 class="font-display text-lg font-semibold text-forest">
-              {pub.data.url ? (
-                <a class="underline-offset-4 hover:underline" href={pub.data.url} target="_blank" rel="noopener noreferrer">
-                  {pub.data.title}
-                </a>
-              ) : (
-                pub.data.title
-              )}
-            </h3>
-            <p class="mt-1 text-sm italic text-ink/60">{pub.data.authors}</p>
-            <p class="mt-1 text-sm text-ink/70">
-              {pub.data.venue}, {pub.data.year}
-            </p>
-          </li>
-        ))
-      }
-    </ul>
-    <p class="mt-8">
-      <a
-        class="inline-flex items-center rounded-md border border-forest/20 bg-snow/70 px-4 py-2.5 text-sm font-medium text-forest transition hover:border-glacier hover:text-glacier"
-        href="/publications"
-      >
-        All publications
-      </a>
-    </p>
-  </Section>
-
-  <Section
-    id="social"
-    eyebrow="Social"
-    icon={Share2}
-    title="Find me elsewhere"
-    intro="Profiles and presence across the web."
-    tone="snow"
-  >
-    <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        profile.social.map((link) => (
-          <li>
-            <a
-              class="group flex items-start justify-between gap-3 rounded-lg border border-forest/10 bg-paper px-4 py-3 transition hover:border-glacier/40 hover:bg-mist/40"
-              href={link.href}
-              rel={link.rel ?? "noopener noreferrer"}
-              target="_blank"
-            >
-              <span>
-                <span class="font-display block text-base font-semibold text-forest group-hover:text-glacier">
-                  {link.label}
-                </span>
-                {link.description && <span class="mt-0.5 block text-sm text-ink/55">{link.description}</span>}
-              </span>
-              <ArrowUpRight class="mt-0.5 shrink-0 text-ink/35 transition group-hover:text-glacier" size={18} aria-hidden="true" />
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </Section>
 </BaseLayout>
