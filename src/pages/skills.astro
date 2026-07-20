@@ -1,18 +1,95 @@
 ---
-import { Sparkles } from "@lucide/astro";
+import { Award, FileBadge, GraduationCap, Sparkles } from "@lucide/astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import { getProfile } from "../lib/profile";
 
 const profile = getProfile();
+
+function formatRange(startedOn: string, finishedOn: string | null) {
+  if (!startedOn && !finishedOn) return "";
+  if (startedOn && finishedOn) {
+    if (startedOn === finishedOn) return startedOn;
+    return `${startedOn} — ${finishedOn}`;
+  }
+  return startedOn || finishedOn || "";
+}
 ---
 
 <BaseLayout
   title={`Skills — ${profile.name}`}
-  description="Focus areas, skills, and languages."
+  description="Education, certifications, skills, and languages."
   canonicalPath="/skills"
 >
-  <Section id="skills" eyebrow="Skills" icon={Sparkles} title="Focus areas" tone="snow">
+  <Section
+    id="education"
+    eyebrow="Education"
+    icon={GraduationCap}
+    title="Where I learned"
+    intro=""
+    tone="snow"
+  >
+    <ul class="space-y-8">
+      {
+        profile.education.map((item) => (
+          <li class="max-w-3xl">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-glacier">
+              {formatRange(item.startedOn, item.finishedOn)}
+            </p>
+            <h3 class="mt-2 font-display text-xl font-semibold text-forest">
+              {item.degree || item.school}
+              {item.degree && item.school && (
+                <span class="font-body text-base font-normal text-ink/55"> · {item.school}</span>
+              )}
+            </h3>
+            {!item.degree && item.school && (
+              <p class="mt-1 text-sm text-ink/60">{item.school}</p>
+            )}
+            {item.field && <p class="mt-2 text-base leading-7 text-ink/75">{item.field}</p>}
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section
+    id="certifications"
+    eyebrow="Certifications"
+    icon={Award}
+    title="What I learned"
+    intro="Certificates and programmes beyond formal degrees."
+    tone="snow"
+  >
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {
+        profile.certifications.map((item) => (
+          <li class="rounded-lg border border-forest/10 bg-paper/70 px-4 py-4">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="font-display text-base font-semibold text-forest">{item.name}</h3>
+              {item.url && (
+                <a
+                  class="shrink-0 rounded-md p-1.5 text-glacier transition hover:bg-glacier/12 hover:text-forest"
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View certificate: ${item.name}`}
+                  title="View certificate"
+                >
+                  <FileBadge size={18} stroke-width={2} aria-hidden="true" />
+                </a>
+              )}
+            </div>
+            <p class="mt-1 text-sm text-ink/60">
+              {item.authority}
+              {item.startedOn && <span> · {item.startedOn}</span>}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section id="skills" eyebrow="Skills" icon={Sparkles} title="My expertise" tone="snow">
     <ul class="flex flex-wrap gap-2">
       {
         profile.skills.map((skill) => (
@@ -22,14 +99,17 @@ const profile = getProfile();
     </ul>
     {
       profile.languages.length > 0 && (
-        <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/70">
-          {profile.languages.map((lang) => (
-            <li>
-              <span class="font-medium text-forest">{lang.name}</span>
-              {lang.proficiency && <span class="text-ink/50"> — {lang.proficiency}</span>}
-            </li>
-          ))}
-        </ul>
+        <div class="mt-10">
+          <h3 class="font-display text-lg font-semibold text-forest">Languages</h3>
+          <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/70">
+            {profile.languages.map((lang) => (
+              <li>
+                <span class="font-medium text-forest">{lang.name}</span>
+                {lang.proficiency && <span class="text-ink/50"> — {lang.proficiency}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
       )
     }
   </Section>

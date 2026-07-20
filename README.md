@@ -30,7 +30,7 @@ npm run linkedin:import -- ./exports/Complete_LinkedInDataExport.zip
 Generated JSON lands in `src/data/linkedin/` (committed). Enrich or correct via:
 
 - `src/data/site.json` — narrative, photo, social links
-- `src/data/overrides.json` — hide skills, override positions
+- `src/data/overrides.json` — hide skills/education, override positions
 - `src/content/open-source/`, `impact/`, `publications/` — collections
 
 ## Build & deploy
