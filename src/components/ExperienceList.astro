@@ -1,22 +1,75 @@
 ---
-import type { Position } from "../lib/profile";
+import type { ExperienceEntry, ExperienceRole } from "../lib/profile";
 
 interface Props {
-  positions: Position[];
+  positions: ExperienceEntry[];
   /** When true, extend the timeline with a dashed segment to hint at more entries. */
   continues?: boolean;
 }
 
 const { positions, continues = false } = Astro.props;
+
+function formatRange(startedOn: string, finishedOn: string | null): string {
+  return finishedOn ? `${startedOn} — ${finishedOn}` : `${startedOn} — Present`;
+}
 ---
 
 <div>
   <ol class="relative">
     {
-      positions.map((job, index) => {
+      positions.map((entry, index) => {
         const isFirst = index === 0;
         const isLast = index === positions.length - 1;
         const showLineBelow = !isLast || continues;
+
+        if (entry.kind === "group") {
+          return (
+            <li class="relative grid grid-cols-[0.75rem_minmax(0,1fr)] gap-x-4">
+              <div class="relative flex justify-center self-stretch" aria-hidden="true">
+                {
+                  showLineBelow && (
+                    <span
+                      class:list={[
+                        "absolute left-1/2 bottom-0 w-px -translate-x-1/2 bg-forest/15",
+                        isFirst ? "top-3" : "top-0",
+                      ]}
+                    />
+                  )
+                }
+                <span class="relative z-10 mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 border-moss bg-snow" />
+              </div>
+              <div class:list={[showLineBelow ? "pb-10" : ""]}>
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-glacier">
+                  {formatRange(entry.startedOn, entry.finishedOn)}
+                </p>
+                <h3 class="mt-2 font-display text-xl font-semibold text-forest">{entry.company}</h3>
+                {entry.location && <p class="mt-1 text-sm text-ink/55">{entry.location}</p>}
+                {entry.description && (
+                  <p class="mt-3 max-w-2xl text-base leading-7 text-ink/75">{entry.description}</p>
+                )}
+                <ol class="mt-5 space-y-5">
+                  {entry.roles.map((role: ExperienceRole) => (
+                    <li class="grid grid-cols-[0.5rem_minmax(0,1fr)] gap-x-3">
+                      <div class="relative flex justify-center pt-1.5" aria-hidden="true">
+                        <span class="h-2 w-2 shrink-0 rounded-full border border-moss/70 bg-snow" />
+                      </div>
+                      <div>
+                        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-glacier/80">
+                          {formatRange(role.startedOn, role.finishedOn)}
+                        </p>
+                        <h4 class="mt-1 font-display text-base font-semibold text-forest">{role.title}</h4>
+                        {role.location && <p class="mt-0.5 text-sm text-ink/55">{role.location}</p>}
+                        {role.description && (
+                          <p class="mt-2 max-w-2xl text-sm leading-6 text-ink/70">{role.description}</p>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </li>
+          );
+        }
 
         return (
           <li class="relative grid grid-cols-[0.75rem_minmax(0,1fr)] gap-x-4">
@@ -26,8 +79,6 @@ const { positions, continues = false } = Astro.props;
                   <span
                     class:list={[
                       "absolute left-1/2 bottom-0 w-px -translate-x-1/2 bg-forest/15",
-                      // First item: start at circle center. Later items: from the top so
-                      // the segment meets the previous one without a gap.
                       isFirst ? "top-3" : "top-0",
                     ]}
                   />
@@ -37,16 +88,15 @@ const { positions, continues = false } = Astro.props;
             </div>
             <div class:list={[showLineBelow ? "pb-10" : ""]}>
               <p class="text-xs font-semibold uppercase tracking-[0.16em] text-glacier">
-                {job.startedOn}
-                {job.finishedOn ? ` — ${job.finishedOn}` : " — Present"}
+                {formatRange(entry.startedOn, entry.finishedOn)}
               </p>
               <h3 class="mt-2 font-display text-xl font-semibold text-forest">
-                {job.title}
-                <span class="font-body text-base font-normal text-ink/55"> · {job.company}</span>
+                {entry.title}
+                <span class="font-body text-base font-normal text-ink/55"> · {entry.company}</span>
               </h3>
-              {job.location && <p class="mt-1 text-sm text-ink/55">{job.location}</p>}
-              {job.description && (
-                <p class="mt-3 max-w-2xl text-base leading-7 text-ink/75">{job.description}</p>
+              {entry.location && <p class="mt-1 text-sm text-ink/55">{entry.location}</p>}
+              {entry.description && (
+                <p class="mt-3 max-w-2xl text-base leading-7 text-ink/75">{entry.description}</p>
               )}
             </div>
           </li>

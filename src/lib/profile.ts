@@ -23,6 +23,30 @@ export type Position = {
   finishedOn: string | null;
 };
 
+export type ExperienceRole = Position;
+
+export type ExperienceGroup = {
+  company: string;
+  description: string;
+  location: string;
+  startedOn: string;
+  finishedOn: string | null;
+  roles: ExperienceRole[];
+};
+
+export type ExperienceEntry =
+  | ({ kind: "role" } & ExperienceRole)
+  | ({ kind: "group" } & ExperienceGroup);
+
+type PositionGroupOverride = {
+  company: string;
+  description?: string;
+  location?: string;
+  startedOn?: string;
+  finishedOn?: string | null;
+  roles: string[];
+};
+
 export type Education = {
   school: string;
   degree: string;
@@ -52,19 +76,103 @@ export type Profile = {
   about: string[];
   social: SocialLink[];
   sameAs: string[];
-  positions: Position[];
+  positions: ExperienceEntry[];
   education: Education[];
   certifications: Certification[];
   skills: string[];
   languages: { name: string; proficiency: string }[];
 };
 
+function positionKey(pos: Position): string {
+  return `${pos.company}::${pos.title}`;
+}
+
 function applyPositionOverrides(list: Position[]): Position[] {
   const map = overrides.positionOverrides as Record<string, Partial<Position>>;
   return list.map((pos) => {
-    const key = `${pos.company}::${pos.title}`;
+    const key = positionKey(pos);
     return map[key] ? { ...pos, ...map[key] } : pos;
   });
+}
+
+function spanFromRoles(roles: ExperienceRole[]): {
+  startedOn: string;
+  finishedOn: string | null;
+} {
+  let earliest = roles[0]?.startedOn ?? "";
+  let latest: string | null = roles[0]?.finishedOn ?? null;
+  let earliestKey = dateSortKey(earliest);
+  let latestKey = latest == null ? Number.POSITIVE_INFINITY : dateSortKey(latest);
+
+  for (const role of roles.slice(1)) {
+    const startKey = dateSortKey(role.startedOn);
+    if (startKey < earliestKey) {
+      earliest = role.startedOn;
+      earliestKey = startKey;
+    }
+    if (role.finishedOn == null) {
+      latest = null;
+      latestKey = Number.POSITIVE_INFINITY;
+    } else if (latest != null) {
+      const endKey = dateSortKey(role.finishedOn);
+      if (endKey > latestKey) {
+        latest = role.finishedOn;
+        latestKey = endKey;
+      }
+    }
+  }
+
+  return { startedOn: earliest, finishedOn: latest };
+}
+
+function applyPositionGroups(list: Position[]): ExperienceEntry[] {
+  const groups = (overrides.positionGroups ?? []) as PositionGroupOverride[];
+  if (groups.length === 0) {
+    return list.map((pos) => ({ kind: "role" as const, ...pos }));
+  }
+
+  const byKey = new Map(list.map((pos) => [positionKey(pos), pos]));
+  const keyToGroup = new Map<string, ExperienceEntry & { kind: "group" }>();
+
+  for (const def of groups) {
+    const roles = def.roles
+      .map((key) => byKey.get(key))
+      .filter((pos): pos is Position => Boolean(pos));
+    if (roles.length === 0) continue;
+
+    const span = spanFromRoles(roles);
+    const entry: ExperienceEntry & { kind: "group" } = {
+      kind: "group",
+      company: def.company,
+      description: def.description ?? "",
+      location: def.location ?? "",
+      startedOn: def.startedOn ?? span.startedOn,
+      finishedOn: def.finishedOn !== undefined ? def.finishedOn : span.finishedOn,
+      roles,
+    };
+
+    for (const role of roles) {
+      keyToGroup.set(positionKey(role), entry);
+    }
+  }
+
+  const emittedGroups = new Set<ExperienceEntry>();
+  const result: ExperienceEntry[] = [];
+
+  for (const pos of list) {
+    const key = positionKey(pos);
+    const group = keyToGroup.get(key);
+    if (group) {
+      if (!emittedGroups.has(group)) {
+        emittedGroups.add(group);
+        result.push(group);
+      }
+      continue;
+    }
+    result.push({ kind: "role", ...pos });
+  }
+
+  return result;
 }
 
 function orderedSkills(raw: { name: string }[]): string[] {
@@ -117,7 +225,7 @@ export function getProfile(): Profile {
     about: site.about,
     social: site.social as SocialLink[],
     sameAs: site.sameAs,
-    positions: applyPositionOverrides(positions as Position[]),
+    positions: applyPositionGroups(applyPositionOverrides(positions as Position[])),
     education: educationList,
     certifications: certificationList,
     skills: orderedSkills(skills),

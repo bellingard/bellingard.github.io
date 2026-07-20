@@ -1,5 +1,31 @@
 {
   "positionOverrides": {},
+  "positionGroups": [
+    {
+      "company": "Sonar",
+      "description": "From early employee to Chief Product Officer — helped grow Sonar from a startup to a global scale-up, building product strategy and the Product organisation along the way.",
+      "startedOn": "Oct 2010",
+      "finishedOn": "Feb 2026",
+      "roles": [
+        "Sonar::Advisor",
+        "Sonar::Chief Product Officer",
+        "Sonar::VP of Product and Head of Product Management",
+        "Sonar::Senior Product Manager - SonarCloud",
+        "Sonar::Product Manager - SonarQube",
+        "Sonar::Startup Mode"
+      ]
+    },
+    {
+      "company": "The Apache Software Foundation",
+      "description": "Open-source contributions as committer and PMC member.",
+      "startedOn": "Nov 2006",
+      "finishedOn": "Sep 2010",
+      "roles": [
+        "The Apache Software Foundation::Committer and PMC - Apache Archiva",
+        "The Apache Software Foundation::Committer - Apache Maven"
+      ]
+    }
+  ],
   "hideSkills": ["Java", "Maven", "Eclipse", "Architecture", "Architectures"],
   "hideEducation": ["Ecole des Mines de Nantes"],
   "featuredSkillOrder": []
