@@ -34,9 +34,15 @@ const impact = await Promise.all(
           <li class="rounded-lg border border-forest/10 bg-paper/80 p-5">
             <h3 class="font-display text-xl font-semibold text-forest">
               {entry.data.url ? (
-                <a class="underline-offset-4 hover:underline" href={entry.data.url} target="_blank" rel="noopener noreferrer">
-                  {entry.data.title}
-                </a>
+                entry.data.url.startsWith("/") ? (
+                  <a class="underline-offset-4 hover:underline" href={entry.data.url}>
+                    {entry.data.title}
+                  </a>
+                ) : (
+                  <a class="underline-offset-4 hover:underline" href={entry.data.url} target="_blank" rel="noopener noreferrer">
+                    {entry.data.title}
+                  </a>
+                )
               ) : (
                 entry.data.title
               )}

@@ -34,7 +34,7 @@ const impact = defineCollection({
   schema: z.object({
     title: z.string(),
     role: z.string().optional(),
-    url: z.url().optional(),
+    url: z.union([z.url(), z.string().regex(/^\/.*/)]).optional(),
     order: z.number().default(0),
   }),
 });

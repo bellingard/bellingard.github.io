@@ -73,7 +73,10 @@ const personLd = {
       chrome && (
         <footer class="border-t border-forest/10 bg-forest text-snow">
           <div class="border-t border-snow/10 py-4 text-center text-xs text-snow/45">
-            © {new Date().getFullYear()} {profile.name} · Built with Astro · Low-impact static site
+            © {new Date().getFullYear()} {profile.name} · Built with Astro ·{" "}
+            <a class="underline-offset-2 hover:text-snow/70 hover:underline" href="/low-impact">
+              Low-impact static site
+            </a>
           </div>
         </footer>
       )
