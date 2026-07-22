@@ -1,9 +1,10 @@
 ---
 title: SonarQube
 org: Sonar
-role: Product Manager (2012–2017), Developer (2010–2012)
+role: Product Manager and Developer
 years: 2010–2017
 url: https://www.sonarqube.org
+highlight: The defacto standard for Code Quality and Security, used by 7M+ developers in the world.
 order: 2
 ---
 
