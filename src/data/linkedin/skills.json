@@ -9,22 +9,10 @@
     "name": "Product Innovation"
   },
   {
-    "name": "Design to Value"
-  },
-  {
-    "name": "Circular Economy"
-  },
-  {
     "name": "Systemic Change"
   },
   {
-    "name": "Green Transition"
-  },
-  {
     "name": "Bio-inspiration"
-  },
-  {
-    "name": "Behavioral Neuroscience"
   },
   {
     "name": "Biomimetics"
@@ -33,7 +21,31 @@
     "name": "Biomimicry"
   },
   {
+    "name": "Design to Value"
+  },
+  {
+    "name": "Circular Economy"
+  },
+  {
+    "name": "Green Transition"
+  },
+  {
+    "name": "Biodiversity"
+  },
+  {
+    "name": "Ecology"
+  },
+  {
     "name": "Earth Science"
+  },
+  {
+    "name": "Behavioral Neuroscience"
+  },
+  {
+    "name": "Behavior Management"
+  },
+  {
+    "name": "Human Factors"
   },
   {
     "name": "Systemic Risk"

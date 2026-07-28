@@ -1,13 +1,5 @@
 [
   {
-    "company": "Team for the Planet",
-    "title": "Associate",
-    "description": "Team for the Planet is a nonprofit company that creates and finances companies fighting against climate change at a global scale.  Video in French => https://www.youtube.com/watch?v=DZnWYPM8dzg&t=4s Video in English => https://youtu.be/zYGB8HxfMUI",
-    "location": "",
-    "startedOn": "Jun 2021",
-    "finishedOn": null
-  },
-  {
     "company": "The Shifters",
     "title": "Bénévole au sein des Shifters",
     "description": "The Shifters est une association d’intérêt général qui rassemble des bénévoles engagés dans la transition bas-carbone de la France et de l’Europe.  Rejoignez-nous !",
@@ -24,9 +16,17 @@
     "finishedOn": null
   },
   {
+    "company": "Team for the Planet",
+    "title": "Associate",
+    "description": "Team for the Planet is a nonprofit company that creates and finances companies fighting against climate change at a global scale.",
+    "location": "",
+    "startedOn": "Jun 2021",
+    "finishedOn": null
+  },
+  {
     "company": "Sonar",
     "title": "Advisor",
-    "description": "",
+    "description": "After stepping down from my executive position to focus on climate & biodiversity impact, I supported Sonar during the transition with the new CPO.",
     "location": "",
     "startedOn": "Nov 2025",
     "finishedOn": "Feb 2026"
@@ -82,7 +82,7 @@
   {
     "company": "Qualixo",
     "title": "Chief Technology Officer",
-    "description": "Qualixo is specialised in software quality.  I launched and led the open-source Squale project (http://www.squale.org), a code-quality product. My roles:  ⟶ Architect and Technical Lead  ⟶ Team and open-source community management  ⟶ Research project management (as part of the System@tic Paris-Region competitive cluster)  ⟶ Commercial services development and promotion",
+    "description": "I launched and led the open-source Squale project (http://www.squale.org), a code-quality product, for which I endorsed several roles: Tech Lead, team leader, open-source community management, research project management (as part of the System@tic Paris-Region competitive cluster), and commercial services development and promotion.",
     "location": "Greater Paris Metropolitan Region",
     "startedOn": "May 2007",
     "finishedOn": "Sep 2010"
@@ -106,16 +106,16 @@
   {
     "company": "Improve",
     "title": "Software Engineer",
-    "description": "☑ Java Web Application development ☑ Eclipse-based project development and management ☑ IT training ☑ Open-source framework development",
-    "location": "Paris Area, France",
+    "description": "Java Web Application development. Open-source framework development. Eclipse-based project development and management.",
+    "location": "Greater Paris Metropolitan Region",
     "startedOn": "Jan 2002",
     "finishedOn": "Mar 2004"
   },
   {
     "company": "IBM Ottawa Lab (formerly OTI)",
     "title": "Sotware Engineer",
-    "description": "Member of the Eclipse Core Team: I developed the Ant Plugin for the first version of Eclipse.",
-    "location": "Ottawa, Canada Area",
+    "description": "Member of the Eclipse Core Team.  We released Eclipse 1.0.0 as an open-source project.",
+    "location": "Greater Ottawa Metropolitan Area",
     "startedOn": "Apr 2001",
     "finishedOn": "Sep 2001"
   }
