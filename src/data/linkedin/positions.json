@@ -1,5 +1,13 @@
 [
   {
+    "company": "Association pour la Pérennité Programmée Circulaire",
+    "title": "Equipe Opérationnelle",
+    "description": "Dans un monde confronté à la raréfaction des ressources, aux enjeux de décarbonation et de souveraineté industrielle, renouveler toujours plus vite les biens n’est plus une réponse soutenable.  La Pérennité Programmée Circulaire rompt avec le modèle industriel linéaire et propose de concevoir et d’organiser les biens, les services et les modèles économiques pour préserver durablement leur valeur, leurs performances et les ressources déjà mobilisées. Le résultat : un alignement entre les intérêts de l'entreprise, du client et de la planète.",
+    "location": "",
+    "startedOn": "Sep 2026",
+    "finishedOn": null
+  },
+  {
     "company": "The Shifters",
     "title": "Bénévole au sein des Shifters",
     "description": "The Shifters est une association d’intérêt général qui rassemble des bénévoles engagés dans la transition bas-carbone de la France et de l’Europe.  Rejoignez-nous !",
@@ -34,8 +42,8 @@
   {
     "company": "Sonar",
     "title": "Chief Product Officer",
-    "description": "Owns Product Strategy, Product Management, Product UX and Documentation, Product Data, and Developer Relations. Team of 50+ PMs, UX designers and researchers, tech writers, dev advocates and community managers.",
-    "location": "Annecy, Auvergne-Rhône-Alpes, France",
+    "description": "I helped grow Sonar from a startup to a global successful unicorn ($350M+ ARR in 2025, rule of 60+, always highly profitable), building product strategy and the product organisation along the way.  I own Product Strategy, Product Management, Product UX and Documentation, Product Data, and Developer Relations. Team of 50+ PMs, UX designers and researchers, tech writers, dev advocates and community managers.",
+    "location": "Annecy",
     "startedOn": "Sep 2022",
     "finishedOn": "Sep 2025"
   },
