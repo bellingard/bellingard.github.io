@@ -1,5 +1,9 @@
 {
   "positionOverrides": {
+    "Association pour la Pérennité Programmée Circulaire::Equipe Opérationnelle": {
+      "title": "Operations Team",
+      "description": "In a world facing resource scarcity and the challenges of decarbonization and industrial sovereignty, ever-faster replacement of goods is no longer a sustainable answer. Circular Planned Durability breaks with the linear industrial model and proposes designing and organizing goods, services, and business models to preserve their value, performance, and the resources already invested over the long term. The result: alignment among the interests of businesses, customers, and the planet."
+    },
     "The Shifters::Bénévole au sein des Shifters": {
       "title": "Volunteer",
       "description": "The Shifters is a public-interest association that brings together volunteers committed to the low-carbon transition of France and Europe."
